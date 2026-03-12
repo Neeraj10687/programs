@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validation with Javascript </title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;   /* horizontal center */
+            align-items: center;       /* vertical center */
+            background-color: #eb1c1c;
+            font-family: Arial, sans-serif;
+        }
+
+        .form-container {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .form-container input {
+            padding: 8px;
+            margin-bottom: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-container input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .form-container input[type="submit"]:hover {
+            background-color: #0056b3;
+            align-self: center;
+        }
+        .form-row{
+            display: flex;
+            align-items:center;
+            margin-bottom:15px;
+
+        }
+
+        .form-row label{
+            width:90px;
+            font-weight:bold;
+        }
+
+        #error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    
+
+<div class="form-container">
+    <h2 style="align-self: center;">Registration Form</h2>
+
+    <form onsubmit="return validateForm()" >
+        <div class="form-row">
+            <label for="name">Username</label>
+        <input type="text" id="name" placeholder="Enter username" ><br>
+        </div>
+
+        <div class="form-row">
+        <label for="email">E-mail    </label>
+        <input type="text" id="email" placeholder="Example@email.com"><br>
+        </div>
+
+        <div class="form-row">
+        <label for="password" >Password</label>
+        <input type="password" id="password" ><br>
+        
+        </div>
+        <input type="submit" value="Submit"  >
+    </form>
+
+    <p id="error"></p>
+</div>
+
+<script>
+function validateForm() {
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let password = document.getElementById("password").value.trim();
+    let error = document.getElementById("error");
+
+    error.innerHTML = "";
+
+    if (name.length < 3) {
+        error.innerHTML = "Name must be at least 3 characters.";
+        return false;
+    }
+
+    let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    if (!email.match(emailPattern)) {
+        error.innerHTML = "Enter a valid email address.";
+        return false;
+    }
+
+    if (password.length < 6) {
+        error.innerHTML = "Password must be at least 6 characters.";
+        return false;
+    }
+
+    alert("Form submitted successfully!");
+    return true;
+}
+</script>
+
+</body>
+</html>
