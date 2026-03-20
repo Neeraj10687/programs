@@ -14,6 +14,13 @@ class hashset{
 
     System.out.println(lhs);
 
+     TreeSet<String> ts=new TreeSet<>();
+    ts.add("pei");
+    ts.add("dog");
+    ts.add("hello");
+
+    System.out.println(ts);
+
 
   }
 }
